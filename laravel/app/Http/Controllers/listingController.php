@@ -7,6 +7,7 @@ use App\Models\listing;
 
 use Illuminate\Http\Request;
 
+
 use Illuminate\Validation\Rule;
 
 class listingController extends Controller
@@ -38,7 +39,7 @@ class listingController extends Controller
 
     // show single listing
     public function show(listing $listing){   //use eloquent model ,Depedent Injection 
-        
+        dd($listing);
         return view("listings.show" , [
             "listing"=> $listing
         ]);
@@ -54,6 +55,7 @@ class listingController extends Controller
     public function store(Request $request){
         //dd($request->all());
         //dd($request->file('logo'));
+        
         $formFiles=$request->validate([
             'company' => ['required', Rule::unique("listings","company")], //if you want mulitple rules, you can use array. 
             'title' => 'required',

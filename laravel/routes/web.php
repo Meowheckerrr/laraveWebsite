@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\jqueryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\listingController;
@@ -74,7 +75,7 @@ Route::get("/listings", [listingController::class, "index"]);  //go to the lisit
 
 //listingController
 
-    //create form 
+    //create form 註冊
     Route::get("/listings/create", [listingController::class, "create"])->middleware("auth");
 
     //store data
@@ -86,7 +87,7 @@ Route::get("/listings", [listingController::class, "index"]);  //go to the lisit
     //update listing
     Route::put("listings/{listing}",[listingController::class,"update"])->middleware("auth");
 
-    //Manage Listings
+    //Manage Listings 編輯
     Route::get("/listings/manage",[listingController::class,"manage"])->middleware("auth");
 
     //single listing 
@@ -96,7 +97,7 @@ Route::get("/listings", [listingController::class, "index"]);  //go to the lisit
     Route::delete("/listings/{listing}",[listingController::class,"destroy"])->middleware("auth");
     
 
-//listingsController
+//UserController
         
     //User registration/create
     Route::get("/register",[userController::class,"create"])->middleware("guest");
@@ -113,7 +114,9 @@ Route::get("/listings", [listingController::class, "index"]);  //go to the lisit
     //login in user
     Route::post("/users/authenticate",[userController::class,"authenticate"]);
     
-
-
-
-
+    
+    
+//Javascript pages
+    
+    //Jquery 
+    Route::get("/jquery/selector",[jqueryController::class,"show"]);
